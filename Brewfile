@@ -1,3 +1,4 @@
+tap "domt4/chromium"
 tap "go-task/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -33,6 +34,8 @@ brew "harfbuzz"
 brew "pango"
 # Library to render SVG files using Cairo
 brew "librsvg"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # GitHub Markdown previewer
 brew "grip"
 # Portable Foreign Function Interface library
@@ -53,6 +56,12 @@ brew "neovim"
 brew "nvm"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 brew "openvpn"
+# Object-relational database system
+brew "postgresql@16"
+# Theme for zsh
+brew "powerlevel10k"
+# Python version management
+brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Interpreted, interactive, object-oriented programming language
@@ -65,8 +74,12 @@ brew "ripgrep"
 brew "ruby-install"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.0"
+# Prints a steam locomotive if you type sl instead of ls
+brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# User interface to the TELNET protocol
+brew "telnet"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
@@ -75,9 +88,9 @@ brew "tree"
 brew "vimpc"
 # Internet file retriever
 brew "wget"
-# Free and open-source web browser
 cask "font-meslo-lg-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 vscode "aaron-bond.better-comments"
 vscode "bradgashler.htmltagwrap"
 vscode "catppuccin.catppuccin-vsc"

@@ -57,3 +57,8 @@ vim.keymap.set("i", "<S-Tab>", "<C-d>")
 --tabs in visual mode
 -- vim.keymap.set("v", "<S-Tab>", "<<")
 -- vim.keymap.set("v", "<Tab>", ">>")
+
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
+
+-- write file on cmd+s
+-- vim.keymap.set("n", "<C-s>", "w<CR>", { silent = true })

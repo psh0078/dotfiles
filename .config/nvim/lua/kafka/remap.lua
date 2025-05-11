@@ -15,6 +15,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
+
 --copy to system clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", '"+y')
 
@@ -64,3 +69,27 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 
 -- write file on cmd+s
 -- vim.keymap.set("n", "<C-s>", "w<CR>", { silent = true })
+
+vim.opt.splitbelow = true -- split windows below
+vim.opt.splitright = true -- split windows right
+
+-- Movement
+local keyset = vim.keymap.set
+
+keyset("n", "<leader>sh", ":split<CR>", { silent = true })   -- horizontal split
+keyset("n", "<leader>sv", ":vsplit<CR>", { silent = true })  -- vertical split
+
+keyset("v", "J", ":m '>+1<cr>gv=gv")
+keyset("v", "K", ":m '<-2<cr>gv=gv")
+keyset("n", "<space>h", "<c-w>h")
+keyset("n", "<space>j", "<c-w>j")
+keyset("n", "<space>k", "<c-w>k")
+keyset("n", "<space>l", "<c-w>l")
+keyset("n", "<leader>wh", "<c-w>t<c-h>H")
+keyset("n", "<leader>wk", "<c-w>t<c-h>K")
+keyset("n", "<down>", ":resize +2<cr>")
+keyset("n", "<up>", ":resize -2<cr>")
+keyset("n", "<right>", ":vertical resize +2<cr>")
+keyset("n", "<left>", ":vertical resize -2<cr>")
+keyset("n", "j", "(v:count ? 'j' : 'gj')", {expr = true})
+keyset("n", "k", "(v:count ? 'k' : 'gk')", {expr = true})

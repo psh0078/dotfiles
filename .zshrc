@@ -61,11 +61,17 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-plugins=(aliases)
-
+plugins=(
+  z
+  git
+  aliases
+  you-should-use
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  )
 source $ZSH/oh-my-zsh.sh
 
+# bindkey '\t' autosuggest-accept
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

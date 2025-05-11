@@ -7,6 +7,17 @@ return {
 	end
 }
 --]]
+
+return {
+  'datsfilipe/vesper.nvim',
+  lazy = false,
+  priority = 1000,
+	config = function()
+		vim.cmd("colorscheme vesper")
+	end
+}
+
+--[[
 return {
     'sainnhe/sonokai',
     lazy = false,
@@ -19,3 +30,4 @@ return {
       vim.cmd.colorscheme('sonokai')
     end
   }
+--]]

@@ -7,15 +7,16 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {},
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
-    config = function ()
+    config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
         automatic_installation = false,
         handlers = {
           function(server_name)
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
             require("lspconfig")[server_name].setup({ capabilities = capabilities })
           end,
         }
@@ -40,13 +41,13 @@ return {
         virtual_text = true,
         signs = true,
         underline = true,
-        update_in_insert = false,
+        update_in_insert = true,
         severity_sort = true,
       })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set({'n'}, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set({ 'n' }, '<leader>ca', vim.lsp.buf.code_action, {})
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

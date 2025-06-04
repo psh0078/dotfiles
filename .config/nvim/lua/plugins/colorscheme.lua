@@ -1,16 +1,18 @@
-return {
-  "vague2k/vague.nvim",
+return { 
+  "bluz71/vim-moonfly-colors", 
+  name = "moonfly", 
+  lazy = false, 
+  priority = 1000,
   config = function()
-		vim.cmd("colorscheme vague")
+    vim.cmd("colorscheme moonfly")
   end
 }
 
 --[[
 return {
-	"rose-pine/neovim",
-	name = "rose-pine",
-	config = function()
-		vim.cmd("colorscheme rose-pine")
-	end
+  "vague2k/vague.nvim",
+  config = function()
+		vim.cmd("colorscheme vague")
+  end
 }
 --]]

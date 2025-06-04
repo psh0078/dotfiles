@@ -3,8 +3,8 @@ return {
   ---@module 'oil'
   ---@type oil.SetupOpts
   keys = {
-    { "<leader>e", "<cmd>Oil<CR>", desc = "Explorer" },
-    { "<leader>fe", "<cmd>Oil --float<CR>", desc = "Explorer" },
+    { "<leader>pv", "<cmd>Oil<CR>", desc = "Explorer" },
+    -- { "<leader>fe", "<cmd>Oil --float<CR>", desc = "Explorer" },
   },
   opts = {
     view_options = {

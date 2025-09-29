@@ -3,60 +3,18 @@ return {
   priority = 1000,
   lazy = false,
   keys = {
-    {
-      "<leader>e",
-      function() Snacks.explorer() end,
-      desc = "File Explorer"
-    },
-    {
-      "<leader>lg",
-      function() Snacks.lazygit.open() end,
-      desc = "LazyGit"
-    }, {
-    "<leader>gf",
-    function() Snacks.picker.git_files() end,
-    desc = "Git Files"
-  },
-    {
-      "<leader>ps",
-      function() Snacks.picker.grep() end,
-      desc = "Live Grep"
-    },
-    {
-      "<leader>pf",
-      function() Snacks.picker.recent() end,
-      desc = "Recent Files"
-    },
-    {
-      "<leader><leader>",
-      function() Snacks.picker.smart() end,
-      desc = "Find Files"
-    },
-    {
-      "<leader>,",
-      function() Snacks.picker.buffers() end,
-      desc = "Buffers"
-    },
-    {
-      "<leader>fb",
-      function() Snacks.picker.buffers() end,
-      desc = "Buffers"
-    },
-    {
-      "<leader>fm",
-      function() Snacks.picker.man() end,
-      desc = "Man Pages"
-    },
-    {
-      "<leader>fk",
-      function() Snacks.picker.keymaps() end,
-      desc = "Keymaps"
-    },
-    {
-      "<leader>fh",
-      function() Snacks.picker.help() end,
-      desc = "Help Tags"
-    }
+    { "<leader>e",        function() Snacks.explorer() end,                  desc = "File Explorer" },
+    { "<leader>pf",       function() Snacks.picker.recent() end,             desc = "Recent Files" },
+    { "<leader><leader>", function() Snacks.picker.smart() end,              desc = "Find Files" },
+    { "<leader>lg",       function() Snacks.lazygit.open() end,              desc = "LazyGit" },
+    { "<leader>gl",       function() Snacks.lazygit.log() end,               desc = "LazyGit Logs" },
+    { "<leader>gf",       function() Snacks.picker.git_files() end,          desc = "Git Files" },
+    { "<leader>rN",       function() Snacks.picker.rename.rename_file() end, desc = "Fast Rename Current File" },
+    { "<leader>ps",       function() Snacks.picker.grep() end,               desc = "Live Grep" },
+    { "<leader>,",        function() Snacks.picker.buffers() end,            desc = "Buffers" },
+    { "<leader>fm",       function() Snacks.picker.man() end,                desc = "Man Pages" },
+    { "<leader>fk",       function() Snacks.picker.keymaps() end,            desc = "Keymaps" },
+    { "<leader>fh",       function() Snacks.picker.help() end,               desc = "Help Tags" }
   },
   opts = {
     dashboard = {
@@ -98,7 +56,7 @@ return {
             action = ":qa"
           }
         },
-         header = [[
+        header = [[
 ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⠀⡀⢀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣽⠃⠀⠀⠀⢼⠻⣿⣿⣟⣿⣿⣿⣿⣶⣶⣶⣶⣤⣤⣤⣤⣤
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠛⡶⢶⢺⠁⠀⠈⢿⣿⣿⣿⣿⣿⣿⣏⣿⣿⣿⣿⣿⣿⣿
@@ -140,7 +98,13 @@ return {
       },
       layout = { preset = "ivy" },
       win = {
-        input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } }
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- ["<Tab>"] = { "move_next", mode = { "n", "i" } },   -- move to next item
+            -- ["<S-Tab>"] = { "move_prev", mode = { "n", "i" } }, -- move to prev item
+          }
+        }
       }
     }
     -- picker = { enabled = true },

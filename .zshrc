@@ -5,8 +5,10 @@
 export ZSH="$HOME/.oh-my-zsh"
 export XDG_CONFIG_HOME="$HOME/.config"
 VIM="nvim"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="philips"
 
+# OCaml: Activates opam environment
+eval $(opam env)
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -102,3 +104,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias l="ls -alh"
 alias vim="nvim"
+alias vi="nvim"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/Users/kafka/.opam/opam-init/init.zsh' ]] || source '/Users/kafka/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
+
+. "$HOME/.local/bin/env"

@@ -39,8 +39,8 @@ vim.keymap.set("n", 'ci"', '"_ci"')
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 --allows use of d without copying
-vim.keymap.set("n", "d", '"_d')
-vim.keymap.set("v", "d", '"_d')
+-- vim.keymap.set("n", "d", '"_d')
+-- vim.keymap.set("v", "d", '"_d')
 
 --force you to use nvim binds!
 vim.keymap.set("n", "<Left>", ':echoe "Use h"<CR>')
@@ -76,15 +76,17 @@ vim.opt.splitright = true -- split windows right
 -- Movement
 local keyset = vim.keymap.set
 
-keyset("n", "<leader>sh", ":split<CR>", { silent = true })  -- horizontal split
-keyset("n", "<leader>sv", ":vsplit<CR>", { silent = true }) -- vertical split
+keyset("n", "<C-h>", ":split<CR>", { silent = true })  -- horizontal split
+keyset("n", "<C-v>", ":vsplit<CR>", { silent = true }) -- vertical split
 
-keyset("v", "J", ":m '>+1<cr>gv=gv")
-keyset("v", "K", ":m '<-2<cr>gv=gv")
 keyset("n", "<space>h", "<c-w>h")
 keyset("n", "<space>j", "<c-w>j")
 keyset("n", "<space>k", "<c-w>k")
 keyset("n", "<space>l", "<c-w>l")
+
+keyset("v", "J", ":m '>+1<cr>gv=gv") -- move line down
+keyset("v", "K", ":m '<-2<cr>gv=gv") -- move line up
+
 keyset("n", "<leader>wh", "<c-w>t<c-h>H")
 keyset("n", "<leader>wk", "<c-w>t<c-h>K")
 keyset("n", "<up>", ":resize +2<cr>")

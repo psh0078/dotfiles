@@ -37,17 +37,35 @@ return {
       },
     },
     config = function()
-      vim.diagnostic.config({
+      --[[ vim.diagnostic.config({
         virtual_text = true,
-        signs = true,
+        signs = false,
         underline = true,
         update_in_insert = true,
         severity_sort = true,
+      }) ]]
+      vim.diagnostic.config({
+        virtual_text = true,
+        float = {
+          focusable = false,
+          style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+        signs = true,
+        underline = true,
+        update_in_insert = true,
+        severity_sort = false,
       })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
       vim.keymap.set({ 'n' }, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "<leader>q", function()
+        vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+      end)
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

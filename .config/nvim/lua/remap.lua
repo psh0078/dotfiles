@@ -7,6 +7,9 @@ vim.keymap.set({ "n", "v", "i" }, "<C-c>", "<Esc>")
 --open netrw
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+vim.keymap.set('n', 'H', '^') -- H goes to first non-blank character
+vim.keymap.set('n', 'L', '$') -- L goes to end of the line
+
 --when using these binds you can move a chunk of text and it will automatically indent
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

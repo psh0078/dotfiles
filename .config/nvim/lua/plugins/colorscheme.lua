@@ -1,5 +1,14 @@
 return {
   {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    enabled = true,
+    config = function()
+      vim.cmd("colorscheme catppuccin-latte")
+    end
+  },
+  {
     "bluz71/vim-moonfly-colors",
     name = "moonfly",
     enabled = false,
@@ -52,7 +61,7 @@ return {
   },
   {
     "vague2k/vague.nvim",
-    enabled = true,
+    enabled = false,
     config = function()
       require("vague").setup({
         -- optional configuration here

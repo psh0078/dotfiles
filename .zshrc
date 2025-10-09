@@ -1,6 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+if command -v tmux>/dev/null; then
+    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux new-session -A -s main
+
+    # check if we have been switched to light, else go dark
+    [[ ! $(tmux show-environment | grep THEME) =~ 'THEME=light' ]] && 
+    tmux set-environment THEME dark
+fi
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -103,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias l="ls -alh"
+alias c="clear"
 alias vim="nvim"
 alias vi="nvim"
 

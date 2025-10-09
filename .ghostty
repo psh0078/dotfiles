@@ -1,0 +1,19 @@
+theme = Ayu Light
+font-size = 14
+font-family = IosevkaTerm Nerd Font Mono
+font-thicken = false
+font-feature = -liga
+font-feature = -calt
+
+
+background-opacity = 0.97
+background-blur = 0
+
+window-decoration = true
+
+scrollback-limit = 67108864
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+quit-after-last-window-closed = true
+shell-integration-features = true
+mouse-hide-while-typing = true

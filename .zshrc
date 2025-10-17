@@ -1,12 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-if command -v tmux>/dev/null; then
-    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux new-session -A -s main
-
-    # check if we have been switched to light, else go dark
-    [[ ! $(tmux show-environment | grep THEME) =~ 'THEME=light' ]] && 
-    tmux set-environment THEME dark
+# Auto-start tmux only if not already inside one
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t main || tmux new-session -s main
 fi
 
 # Path to your Oh My Zsh installation.

@@ -33,3 +33,5 @@ cd ~/.dotfiles && brew bundle
 
 
 ## TODO List
+- [ ] toggle appearance for tmux and nvim
+- [ ] tidy up Brewfile (remove unused packages/dependencies)

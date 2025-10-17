@@ -1,9 +1,18 @@
 return {
   {
+    'deparr/tairiki.nvim',
+    lazy = false,
+    enabled = true,
+    priority = 1000, -- recommended if you use tairiki as your default theme
+    config = function()
+      vim.cmd("colorscheme tairiki-dimmed")
+    end
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    enabled = true,
+    enabled = false,
     config = function()
       vim.cmd("colorscheme catppuccin-latte")
     end

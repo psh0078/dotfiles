@@ -2,7 +2,7 @@
 TERM = "screen-256color"
 
 [font]
-size = 14
+size = 16
 
 # [font.bold]
 # style = "Bold"
@@ -73,11 +73,6 @@ key = "C"
 mods = "Command"
 
 [[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Command"
-
-[[keyboard.bindings]]
 action = "Hide"
 key = "H"
 mods = "Command"
@@ -119,8 +114,14 @@ key = "B"
 mode = "~Search"
 mods = "Command"
 
+[[keyboard.bindings]]
+key = "Return"
+mods = "Command"
+action = "ToggleFullscreen"
+
 [window]
-opacity = 0.96
+opacity = 0.95
+blur = true
 decorations = "none"
 dynamic_padding = true
 option_as_alt = "Both"

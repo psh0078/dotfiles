@@ -2,9 +2,9 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Auto-start tmux only if not already inside one
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux attach-session -t main || tmux new-session -s main
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#   tmux attach-session -t main || tmux new-session -s main
+# fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -111,7 +111,7 @@ alias l="ls -alh"
 alias c="clear"
 alias vim="nvim"
 alias vi="nvim"
-
+alias venv="source .venv/bin/activate"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:

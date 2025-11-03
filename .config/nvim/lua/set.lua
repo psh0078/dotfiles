@@ -7,8 +7,8 @@ opt.relativenumber = true
 --make the time to accept a command to 500 ms instead of 1000 for mappings
 opt.updatetime = 500
 
--- time to wait for a keybind to complete 
-opt.timeoutlen = 500
+-- time to wait for a keybind to complete
+opt.timeoutlen = 200
 
 --enable colored line on cursor
 opt.cursorline = true
@@ -20,15 +20,15 @@ opt.smarttab = true
 opt.autoindent = true
 
 --set tabs to 2 spaces no matter what
-opt.tabstop = 2 --amount of spaces for normal tabs
-opt.shiftwidth = 2 -- spaces for when using << or >>
+opt.tabstop = 2      --amount of spaces for normal tabs
+opt.shiftwidth = 2   -- spaces for when using << or >>
 opt.expandtab = true -- pressing tab key will insert spaces instead of tab character
 
 --self explainatory
 opt.smartindent = true
 
 --dont wrap text
-opt.wrap = false 
+opt.wrap = false
 -- gives me the chunky cursor in insert mode
 opt.guicursor = ""
 
@@ -39,7 +39,7 @@ opt.backup = true
 vim.opt_global.backupdir = os.getenv("HOME") .. "/.nvimTmp/backupdir"
 opt.backupcopy = "auto"
 
--- hold undos into a file for persistance 
+-- hold undos into a file for persistance
 opt.undofile = true
 opt.undodir = os.getenv("HOME") .. "/.nvimTmp/undodir"
 
@@ -67,5 +67,3 @@ opt.smartcase = true
 
 -- command line height (status line still stays)
 opt.cmdheight = 0;
-
-

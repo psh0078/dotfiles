@@ -1,10 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Auto-start tmux only if not already inside one
-# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#   tmux attach-session -t main || tmux new-session -s main
-# fi
+# # Auto-start tmux only in Alacritty, not VSCode
+if [[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]]; then
+  tmux new-session -A -s main
+fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -104,14 +104,13 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias l="ls -alh"
 alias c="clear"
 alias vim="nvim"
 alias vi="nvim"
 alias venv="source .venv/bin/activate"
+alias lg="lazygit"
+alias ghidra="cd ~/dev/ghidra_11.4.2_PUBLIC/; ./ghidraRun"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -122,3 +121,13 @@ alias venv="source .venv/bin/activate"
 # END opam configuration
 
 . "$HOME/.local/bin/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kafka/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"

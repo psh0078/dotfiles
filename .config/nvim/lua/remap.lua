@@ -43,8 +43,8 @@ vim.keymap.set("n", 'ci"', '"_ci"')
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 --allows use of d without copying
-vim.keymap.set("n", "d", '"_d')
-vim.keymap.set("v", "d", '"_d')
+vim.keymap.set("n", "D", '"_d')
+vim.keymap.set("v", "D", '"_d')
 
 --force you to use nvim binds!
 vim.keymap.set("n", "<Left>", ':echoe "Use h"<CR>')

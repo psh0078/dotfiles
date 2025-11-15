@@ -1,13 +1,20 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# # Auto-start tmux only in Alacritty, not VSCode
+# Auto-start tmux only in Alacritty, not VSCode
 if [[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]]; then
-  tmux new-session -A -s main
+  # Check if a tmux server is already running
+  if tmux has-session 2>/dev/null; then
+    # Attach to the default session (or any existing session)
+    tmux attach-session
+  else
+    # No sessions exist—create the main one
+    tmux new-session -s main
+  fi
 fi
 
-PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
 # Path to your Oh My Zsh installation.
+PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
 export ZSH="$HOME/.oh-my-zsh"
 export XDG_CONFIG_HOME="$HOME/.config"
 VIM="nvim"

@@ -4,6 +4,8 @@ vim.g.mapleader = " "
 --Make Ctrl+C equivalent to ESC so that the exit hint doesn't come up over the status line
 vim.keymap.set({ "n", "v", "i" }, "<C-c>", "<Esc>")
 
+vim.keymap.set("i", "jj", "<ESC>", { silent = true })
+
 --open netrw
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 

@@ -3,7 +3,7 @@ return {
   priority = 1000,
   lazy = false,
   keys = {
-    { "<leader>e",        function() Snacks.explorer() end,                  desc = "File Explorer" },
+    -- { "<leader>e",        function() Snacks.explorer() end,                  desc = "File Explorer" },
     { "<leader>pf",       function() Snacks.picker.recent() end,             desc = "Recent Files" },
     { "<leader><leader>", function() Snacks.picker.smart() end,              desc = "Find Files" },
     { "<leader>lg",       function() Snacks.lazygit.open() end,              desc = "LazyGit" },

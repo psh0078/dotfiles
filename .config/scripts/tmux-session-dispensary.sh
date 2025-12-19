@@ -1,6 +1,8 @@
 #!/bin/bash
 
 DIRS=(
+    "$HOME/Desktop/Research"
+    "$HOME/Desktop/school"
     "$HOME/dotfiles"
     "$HOME/dev"
     "$HOME"
@@ -18,6 +20,7 @@ fi
 
 [[ ! $selected ]] && exit 0
 
+# selected=$(realpath -s "$selected")
 selected_name=$(basename "$selected" | tr . _)
 
 if ! tmux has-session -t "$selected_name"; then

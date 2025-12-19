@@ -3,8 +3,8 @@ return {
   ---@module 'oil'
   ---@type oil.SetupOpts
   keys = {
-    { "<leader>pv", "<cmd>Oil<CR>",                               desc = "Explorer" },
-    { "<leader>-",  function() require("oil").toggle_float() end, desc = "Explorer" },
+    { "<leader>e", "<cmd>Oil<CR>",                               desc = "Explorer" },
+    { "<leader>-", function() require("oil").toggle_float() end, desc = "Explorer" },
   },
   opts = {
     view_options = {

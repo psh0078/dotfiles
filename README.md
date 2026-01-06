@@ -10,7 +10,7 @@ xcode-select --install
 
 
 2. Clone repo into new hidden directory.
-3. Create symlinks in the Home directory to the real files in the repo.
+3. Create symlinks in the Home directory to the real files in the repo. (Be sure to execute this command in \dotfiles)
 
 ```
 stow .

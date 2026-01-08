@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Auto-start tmux only in Alacritty, not VSCode
-if [[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]]; then
+if [[ -z "$TMUX" && "$TERM_PROGRAM" == "ghostty" ]]; then
   # Check if a tmux server is already running
   if tmux has-session 2>/dev/null; then
     # Attach to the default session (or any existing session)

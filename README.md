@@ -33,6 +33,7 @@ cd ~/.dotfiles && brew bundle
 
 
 ## TODO List
-- [ ] toggle appearance for tmux and nvim
 - [ ] tidy up Brewfile (remove unused packages/dependencies)
 - [x] add lazygit
+- [ ] build a buffer navigation system 
+- [ ] get tabout  to working

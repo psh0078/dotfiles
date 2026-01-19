@@ -1,17 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Auto-start tmux only in Alacritty, not VSCode
-if [[ -z "$TMUX" && "$TERM_PROGRAM" == "ghostty" ]]; then
-  # Check if a tmux server is already running
-  if tmux has-session 2>/dev/null; then
-    # Attach to the default session (or any existing session)
-    tmux attach-session
-  else
-    # No sessions exist—create the main one
-    tmux new-session -s main
+_tmux_set_theme_from_system() {
+  command -v tmux >/dev/null 2>&1 || return 0
+
+  local theme="light"
+  if [[ "$OSTYPE" == darwin* ]]; then
+    # If this key exists, macOS is in Dark Mode
+    defaults read -g AppleInterfaceStyle >/dev/null 2>&1 && theme="dark"
+  fi
+
+  # propagate to new tmux server via env and to existing server via set-environment
+  export THEME="$theme"
+  # Set globally for the tmux server (works even before attach if server exists)
+  tmux set-environment -g THEME "$theme" 2>/dev/null || true
+}
+
+if [[ -o interactive && -z "$TMUX" && "${TERM_PROGRAM:l}" == "ghostty" ]]; then
+  if command -v tmux >/dev/null 2>&1; then
+    _tmux_set_theme_from_system
+    exec tmux new-session -A -s main
   fi
 fi
+
 
 # Path to your Oh My Zsh installation.
 PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
@@ -119,6 +130,8 @@ alias vi="nvim"
 alias venv="source .venv/bin/activate"
 alias lg="lazygit"
 alias ghidra="cd ~/dev/ghidra_11.4.2_PUBLIC/; ./ghidraRun"
+alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'"
+alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -139,3 +152,12 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
+export PATH="/opt/homebrew/bin:$PATH"
+
+# bun completions
+[ -s "/Users/kafka/.bun/_bun" ] && source "/Users/kafka/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"

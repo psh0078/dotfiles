@@ -101,6 +101,9 @@ return {
         input = {
           keys = {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- Tab navigation (what you want)
+            ["<Tab>"] = { "list_down", mode = { "i", "n" } },
+            ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
             -- ["<Tab>"] = { "move_next", mode = { "n", "i" } },   -- move to next item
             -- ["<S-Tab>"] = { "move_prev", mode = { "n", "i" } }, -- move to prev item
           }

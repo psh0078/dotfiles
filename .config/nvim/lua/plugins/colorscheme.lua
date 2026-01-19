@@ -1,22 +1,41 @@
-return {
-  {
-    'deparr/tairiki.nvim',
+local bg = vim.g.system_background or "light"
+
+-- pick your light/dark theme in one place
+local themes = {
+  dark = {
+    package = "deparr/tairiki.nvim",
+    colorscheme = "tairiki-dimmed",
+  },
+  -- light = {
+  --   package = "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   colorscheme = "catppuccin-latte",
+  -- },
+  light = {
+    package = "thesimonho/kanagawa-paper.nvim",
+    name = "kanagawa-paper",
+    colorscheme = "kanagawa-paper-canvas",
+  },
+}
+
+local function theme_spec(variant)
+  local theme = themes[variant]
+  return {
+    theme.package,
+    name = theme.name,
     lazy = false,
-    enabled = true,
-    priority = 1000, -- recommended if you use tairiki as your default theme
-    config = function()
-      vim.cmd("colorscheme tairiki-dimmed")
-    end
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
     priority = 1000,
-    enabled = false,
+    enabled = bg == variant,
     config = function()
-      vim.cmd("colorscheme catppuccin-latte")
-    end
-  },
+      vim.opt.background = variant
+      vim.cmd("colorscheme " .. theme.colorscheme)
+    end,
+  }
+end
+
+return {
+  theme_spec("dark"),
+  theme_spec("light"),
   {
     "bluz71/vim-moonfly-colors",
     name = "moonfly",

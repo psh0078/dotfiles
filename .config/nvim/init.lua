@@ -1,5 +1,20 @@
 -- load this before the plugins
 vim.opt.termguicolors = true
+
+-- pick background based on macOS appearance to avoid flashes
+local function system_background()
+  if vim.fn.has("mac") == 1 then
+    vim.fn.system({ "defaults", "read", "-g", "AppleInterfaceStyle" })
+    if vim.v.shell_error == 0 then
+      return "dark"
+    end
+  end
+  return "light"
+end
+
+vim.g.system_background = system_background()
+vim.opt.background = vim.g.system_background
+
 require("remap")
 require("set")
 

@@ -1,20 +1,14 @@
 local bg = vim.g.system_background or "light"
 
--- pick your light/dark theme in one place
 local themes = {
   dark = {
     package = "deparr/tairiki.nvim",
     colorscheme = "tairiki-dimmed",
   },
-  -- light = {
-  --   package = "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   colorscheme = "catppuccin-latte",
-  -- },
   light = {
-    package = "thesimonho/kanagawa-paper.nvim",
-    name = "kanagawa-paper",
-    colorscheme = "kanagawa-paper-canvas",
+    package = "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    colorscheme = "github_light",
   },
 }
 
@@ -28,7 +22,11 @@ local function theme_spec(variant)
     enabled = bg == variant,
     config = function()
       vim.opt.background = variant
-      vim.cmd("colorscheme " .. theme.colorscheme)
+
+      -- must happen BEFORE colorscheme for ayu
+      if theme.pre then theme.pre() end
+
+      vim.cmd.colorscheme(theme.colorscheme)
     end,
   }
 end

@@ -1,5 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+### My Zsh Config ###
 
 _tmux_set_theme_from_system() {
   command -v tmux >/dev/null 2>&1 || return 0
@@ -115,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
+#### ALIAS ####
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -132,6 +132,11 @@ alias lg="lazygit"
 alias ghidra="cd ~/dev/ghidra_11.4.2_PUBLIC/; ./ghidraRun"
 alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'"
 alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'"
+alias sd="cd ~ && cd \$(find * -type d | fzf --height 40% --reverse)"
+
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:

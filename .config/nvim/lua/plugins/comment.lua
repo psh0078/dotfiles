@@ -3,7 +3,7 @@ return {
   opts = {
     opleader = {
       ---Line-comment keymap
-      line = 'gc',
+      line = 'cm',
       ---Block-comment keymap
       block = 'gb',
     },

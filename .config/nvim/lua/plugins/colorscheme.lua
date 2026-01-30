@@ -1,55 +1,21 @@
-local bg = vim.g.system_background or "light"
-
-local themes = {
-  dark = {
-    package = "deparr/tairiki.nvim",
-    colorscheme = "tairiki-dimmed",
-  },
-  light = {
-    package = "projekt0n/github-nvim-theme",
-    name = "github-theme",
-    colorscheme = "github_light",
-  },
-}
-
-local function theme_spec(variant)
-  local theme = themes[variant]
-  return {
-    theme.package,
-    name = theme.name,
-    lazy = false,
-    priority = 1000,
-    enabled = bg == variant,
-    config = function()
-      vim.opt.background = variant
-
-      -- must happen BEFORE colorscheme for ayu
-      if theme.pre then theme.pre() end
-
-      vim.cmd.colorscheme(theme.colorscheme)
-    end,
-  }
-end
-
 return {
-  theme_spec("dark"),
-  theme_spec("light"),
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    enabled = false,
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme catppuccin-latte")
+    end
+  },
   {
     "bluz71/vim-moonfly-colors",
     name = "moonfly",
-    enabled = false,
+    enabled = true,
     lazy = false,
     priority = 1000,
     config = function()
       vim.cmd("colorscheme moonfly")
-    end
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    enabled = false,
-    config = function()
-      vim.cmd("colorscheme rose-pine")
     end
   },
   {

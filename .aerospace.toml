@@ -1,25 +1,35 @@
 ##### SeongHo's AeroSpace Config #####
 
 # TODO: switch from alt to cmd (check if any important cmd hotkeys that I need to be aware of)
+# https://github.com/viliusjan/dotfiles/blob/master/aerospace/.config/aerospace/aerospace.toml
 
 config-version = 2
 start-at-login = true 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-accordion-padding = 100
+accordion-padding = 50
 
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = 'move-mouse window-lazy-center'
+# on-focus-changed = 'move-mouse window-lazy-center'
 
-automatically-unhide-macos-hidden-apps = false
+automatically-unhide-macos-hidden-apps = true
 
 persistent-workspaces = ["1", "2", "3", "4"]
 
 on-mode-changed = []
+
+#### Order matters!!!!
+
+[[on-window-detected]]
+run = "layout floating"
+
+# [[on-window-detected]]
+# if.app-id = "com.mitchellh.ghostty"
+# run = "layout floating"
 
 [key-mapping]
     preset = 'qwerty'
@@ -33,50 +43,50 @@ on-mode-changed = []
     outer.right =      10
 
 [mode.main.binding]
-    alt-slash = 'layout tiles horizontal vertical'
-    alt-comma = 'layout accordion horizontal vertical'
+    cmd-slash = 'layout tiles horizontal vertical'
+    cmd-comma = 'layout accordion horizontal vertical'
 
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
+    cmd-h = 'focus left'
+    cmd-j = 'focus down'
+    cmd-k = 'focus up'
+    cmd-l = 'focus right'
 
-    alt-shift-h = 'move left'
-    alt-shift-j = 'move down'
-    alt-shift-k = 'move up'
-    alt-shift-l = 'move right'
+    cmd-shift-h = 'move left'
+    cmd-shift-j = 'move down'
+    cmd-shift-k = 'move up'
+    cmd-shift-l = 'move right'
 
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
 
-    alt-1 = 'workspace 1'
-    alt-2 = 'workspace 2'
-    alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
+    cmd-1 = 'workspace 1'
+    cmd-2 = 'workspace 2'
+    cmd-3 = 'workspace 3'
+    cmd-4 = 'workspace 4'
 
-    alt-shift-1 = 'move-node-to-workspace 1'
-    alt-shift-2 = 'move-node-to-workspace 2'
-    alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
+    cmd-shift-1 = 'move-node-to-workspace 1'
+    cmd-shift-2 = 'move-node-to-workspace 2'
+    cmd-shift-3 = 'move-node-to-workspace 3'
+    cmd-shift-4 = 'move-node-to-workspace 4'
 
-    alt-e = 'layout tiles horizontal'
+    alt-h = 'layout tiles horizontal'
     alt-v = 'layout tiles vertical'
-    alt-f = ['mode service', 'layout floating tiling', 'mode main']
+    cmd-shift-f = ['mode service', 'layout floating tiling', 'mode main']
+    cmd-e = 'balance-sizes'
 
-    alt-shift-f = 'fullscreen'
-    alt-shift-q = 'close'
+    cmd-enter = 'fullscreen'
 
     alt-tab = 'workspace-back-and-forth'
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-    alt-shift-semicolon = 'mode service'
+    cmd-shift-semicolon = 'mode service'
 
 [mode.service.binding]
     esc = ['reload-config', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     backspace = ['close-all-windows-but-current', 'mode main']
 
-    alt-shift-h = ['join-with left', 'mode main']
-    alt-shift-j = ['join-with down', 'mode main']
-    alt-shift-k = ['join-with up', 'mode main']
-    alt-shift-l = ['join-with right', 'mode main']
+    cmd-shift-h = ['join-with left', 'mode main']
+    cmd-shift-j = ['join-with down', 'mode main']
+    cmd-shift-k = ['join-with up', 'mode main']
+    cmd-shift-l = ['join-with right', 'mode main']

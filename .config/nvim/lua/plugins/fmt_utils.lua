@@ -39,4 +39,8 @@ return {
     search_method = "cover",
     silent = false,
   },
+  {
+    --automatic highlight disabling when done with search
+    "romainl/vim-cool",
+  }
 }

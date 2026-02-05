@@ -1,9 +1,9 @@
 [env]
-TERM = "xterm-256color"
+TERM = "screen-256color"
 TERM_PROGRAM = "Alacritty"
 
 [font]
-size = 18
+size = 16.5
 
 # [font.bold]
 # style = "Bold"
@@ -14,7 +14,7 @@ size = 18
 
 [font.normal]
 family = "IosevkaTerm Nerd Font Mono"
-style = "Regular"
+style = "Light"
 
 # [[keyboard.bindings]]
 # chars = "\u001BOH"
@@ -121,15 +121,11 @@ mods = "Command"
 action = "ToggleFullscreen"
 
 [window]
-opacity = 0.95
-blur = true
-decorations = "Buttonless"
+opacity = 1.0
+decorations = "none"
 dynamic_padding = true
 option_as_alt = "Both"
 
 [window.padding]
 x = 0
 y = 0
-
-[general]
-import = ["themes/bloodmoon.toml"]

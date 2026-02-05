@@ -22,14 +22,22 @@ persistent-workspaces = ["1", "2", "3", "4"]
 
 on-mode-changed = []
 
-#### Order matters!!!!
+#### Order matters!!!! ####
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = "layout tiles"
+
+[[on-window-detected]]
+if.app-id = "md.obsidian"
+run = "layout tiles"
+
+[[on-window-detected]]
+if.app-id = "com.brave.Browser"
+run = "layout tiles"
 
 [[on-window-detected]]
 run = "layout floating"
-
-# [[on-window-detected]]
-# if.app-id = "com.mitchellh.ghostty"
-# run = "layout floating"
 
 [key-mapping]
     preset = 'qwerty'

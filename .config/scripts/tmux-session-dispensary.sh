@@ -3,6 +3,7 @@
 DIRS=(
     "$HOME/Desktop/Research"
     "$HOME/Desktop/school"
+    "$HOME/Desktop"
     "$HOME/dotfiles"
     "$HOME/dev"
     "$HOME"

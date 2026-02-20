@@ -1,0 +1,40 @@
+return {
+  "lervag/vimtex",
+  lazy = false, -- we don't want to lazy load VimTeX
+  init = function()
+    vim.g.vimtex_view_method = "skim"
+    vim.g.vimtex_view_forward_search_on_start = 1
+
+    vim.g.vimtex_indent_enabled = false      -- Disable auto-indent from Vimtex
+    vim.g.tex_indent_items = false           -- Disable indent for enumerate
+    vim.g.tex_indent_brace = false           -- Disable brace indent
+    -- Compiler settings
+    vim.g.vimtex_compiler_method = 'latexmk' -- Explicit compiler backend selection
+    vim.g.vimtex_compiler_latexmk = {        -- latexmk configuration
+      build_dir = 'build',                   -- Build artifacts directory
+      out_dir = 'build',                     -- Output directory for PDF and aux files
+      aux_dir = 'build',                     -- Auxiliary files directory
+      options = {
+        '-xelatex',                          -- Use XeLaTeX engine
+        '-interaction=nonstopmode',          -- Don't stop on errors
+        '-file-line-error',                  -- Better error messages
+        '-synctex=1',                        -- Enable SyncTeX
+      },
+    }
+
+    vim.g.vimtex_quickfix_mode = 0           -- Open quickfix window on errors (2 = auto-close when empty)
+    vim.g.vimtex_quickfix_ignore_filters = { -- Filter out common noise
+      'Underfull',
+      'Overfull',
+      'specifier changed to',
+      'Token not allowed in a PDF string',
+      'Package hyperref Warning',
+    }
+    vim.g.vimtex_log_ignore = { -- Suppress specific log messages
+      'Underfull',
+      'Overfull',
+      'specifier changed to',
+      'Token not allowed in a PDF string',
+    }
+  end
+}

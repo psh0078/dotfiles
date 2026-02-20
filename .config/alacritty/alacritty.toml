@@ -5,33 +5,24 @@ TERM_PROGRAM = "Alacritty"
 [font]
 size = 16.5
 
-# [font.bold]
-# style = "Bold"
+[window]
+opacity = 1
+decorations = "none"
+dynamic_padding = true
+option_as_alt = "Both"
 
-# to install the themes
-# mkdir -p ~/.config/alacritty/themes
-# git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/ayu_light.toml"
+]
+
+[window.padding]
+x = 0
+y = 0
 
 [font.normal]
 family = "IosevkaTerm Nerd Font Mono"
 style = "Light"
-
-# [[keyboard.bindings]]
-# chars = "\u001BOH"
-# key = "Left"
-# mode = "AppCursor"
-# mods = "Command"
-#
-# [[keyboard.bindings]]
-# chars = "\u001BOF"
-# key = "Right"
-# mode = "AppCursor"
-# mods = "Command"
-#
-# [[keyboard.bindings]]
-# chars = "\u0015"
-# key = "Back"
-# mods = "Command
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
@@ -120,12 +111,3 @@ key = "Return"
 mods = "Command"
 action = "ToggleFullscreen"
 
-[window]
-opacity = 1.0
-decorations = "none"
-dynamic_padding = true
-option_as_alt = "Both"
-
-[window.padding]
-x = 0
-y = 0

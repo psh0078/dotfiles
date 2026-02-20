@@ -51,8 +51,8 @@ run = "layout floating"
     outer.right =      10
 
 [mode.main.binding]
-    cmd-slash = 'layout tiles horizontal vertical'
-    cmd-comma = 'layout accordion horizontal vertical'
+    # cmd-slash = 'layout tiles horizontal vertical'
+    # cmd-comma = 'layout accordion horizontal vertical'
 
     cmd-h = 'focus left'
     cmd-j = 'focus down'

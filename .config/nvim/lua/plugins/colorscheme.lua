@@ -9,12 +9,12 @@ return {
     end
   },
   {
-    "Mofiqul/vscode.nvim",
-    lazy = false,
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+    enabled = false,
     priority = 1000,
-    opts = {},
     config = function()
-      vim.cmd("colorscheme vscode")
+      vim.cmd("colorscheme kanagawa-lotus")
     end
   },
   {
@@ -25,6 +25,16 @@ return {
     priority = 1000,
     config = function()
       vim.cmd("colorscheme moonfly")
+    end
+  },
+  {
+    "deparr/tairiki.nvim",
+    name = "tairiki",
+    enabled = true,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme tairiki-dimmed")
     end
   },
 }

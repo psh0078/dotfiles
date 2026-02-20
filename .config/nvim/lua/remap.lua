@@ -4,8 +4,8 @@ vim.g.mapleader = " "
 --Make Ctrl+C equivalent to ESC so that the exit hint doesn't come up over the status line
 vim.keymap.set({ "n", "v", "i" }, "<C-c>", "<Esc>")
 
-vim.keymap.set("i", "jj", "<ESC>", { silent = true })
 vim.keymap.set("i", "jk", "<ESC>", { silent = true })
+vim.keymap.set("i", "jj", "<ESC>", { silent = true })
 
 --open netrw
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -91,8 +91,9 @@ keyset("n", "<space>j", "<c-w>j")
 keyset("n", "<space>k", "<c-w>k")
 keyset("n", "<space>l", "<c-w>l")
 
-keyset("v", "J", ":m '>+1<cr>gv=gv") -- move line down
-keyset("v", "K", ":m '<-2<cr>gv=gv") -- move line up
+-- Visual: move selection down/up, keep it selected
+keyset("v", "J", ":m '>+1<CR>gv=gvgv")
+keyset("v", "K", ":m '<-2<CR>gv=gvgv")
 
 keyset("n", "<leader>wh", "<c-w>t<c-h>H")
 keyset("n", "<leader>wk", "<c-w>t<c-h>K")

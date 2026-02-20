@@ -1,37 +1,6 @@
 ##### My Zsh Config #####
 
-# Start tmux chooser if not already inside tmux
-if [[ -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
-  # List session names only (empty if server not running)
-  session_names="$(tmux list-sessions -F '#S' 2>/dev/null)"
-
-  create_new_session="Create new session"
-  start_without_tmux="Start without tmux"
-
-  choice="$(
-    printf "%s\n%s\n%s\n" \
-      ${=session_names} \
-      "$create_new_session" \
-      "$start_without_tmux" \
-    | fzf
-  )"
-
-  case "$choice" in
-    "" )
-      # fzf cancelled
-      ;;
-    "$create_new_session" )
-      tmux new-session
-      ;;
-    "$start_without_tmux" )
-      :
-      ;;
-    * )
-      # Attach by session NAME
-      tmux attach-session -t "$choice"
-      ;;
-  esac
-fi
+source $HOME/.config/scripts/tmux-chooser.sh
 
 # Path to your Oh My Zsh installation.
 PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
@@ -57,10 +26,10 @@ alias l="ls -alh"
 alias c="clear"
 alias vim="nvim"
 alias vi="nvim"
+alias tm="tmux"
 alias venv="source .venv/bin/activate"
 alias lg="lazygit"
 alias bopen="open -a 'Brave Browser'"
-alias ghidra="cd ~/dev/ghidra_11.4.2_PUBLIC/; ./ghidraRun"
 alias ol="printf 'light' > ~/.tmux_theme; tmux source-file ~/.tmux_light.conf; tmux set-environment -g THEME 'light'"
 alias od="printf 'dark' > ~/.tmux_theme; tmux source-file ~/.tmux_dark.conf; tmux set-environment -g THEME 'dark'"
 alias sd="cd ~ && cd \$(find * -type d | fzf --height 40% --reverse)"

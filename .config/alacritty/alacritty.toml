@@ -11,11 +11,6 @@ decorations = "none"
 dynamic_padding = true
 option_as_alt = "Both"
 
-[general]
-import = [
-    "~/.config/alacritty/themes/themes/ayu_light.toml"
-]
-
 [window.padding]
 x = 0
 y = 0

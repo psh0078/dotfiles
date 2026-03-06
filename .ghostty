@@ -1,19 +1,23 @@
-theme = Ayu Light
-font-size = 14
+# Legacy fallback location.
+# Canonical config lives at ~/.config/ghostty/config.
+
+theme = dark:Dimidium,light:Ayu Light
+font-size = 16
 font-family = IosevkaTerm Nerd Font Mono
 font-thicken = false
 font-feature = -liga
 font-feature = -calt
 
-
-background-opacity = 0.97
+background-opacity = 1.0
 background-blur = 0
 
-window-decoration = false
+window-decoration = none
 
 scrollback-limit = 67108864
 clipboard-trim-trailing-spaces = true
 clipboard-paste-protection = true
 quit-after-last-window-closed = true
 shell-integration-features = true
+macos-titlebar-style = transparent
 mouse-hide-while-typing = true
+confirm-close-surface = false

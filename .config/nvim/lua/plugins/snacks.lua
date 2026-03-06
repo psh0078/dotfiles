@@ -104,7 +104,17 @@ return {
             -- Tab navigation (what you want)
             ["<Tab>"] = { "list_down", mode = { "i", "n" } },
             ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
-            ["d"] = { "bufdelete", mode = { "n", "i" }, desc = "Delete buffer(s)" },
+          }
+        }
+      },
+      sources = {
+        buffers = {
+          win = {
+            input = {
+              keys = {
+                ["d"] = { "bufdelete", mode = { "n", "i" }, desc = "Delete buffer(s)" },
+              }
+            }
           }
         }
       }

@@ -1,7 +1,6 @@
 return {
   {
     "abecodes/tabout.nvim",
-    lazy = false,
     enabled = true,
     config = function()
       require("tabout").setup({
@@ -25,19 +24,10 @@ return {
         exclude = {}, -- tabout will ignore these filetypes
       })
     end,
-    dependencies = { -- These are optional
+    dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "L3MON4D3/LuaSnip",
     },
-    opt = true,              -- Set this to true if the plugin is optional
     event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
     priority = 1000,
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      -- Disable default tab keybinding in LuaSnip
-      return {}
-    end,
   },
 }

@@ -9,11 +9,17 @@ xcode-select --install
 ```
 
 
-2. Clone repo into new hidden directory.
-3. Create symlinks in the Home directory to the real files in the repo. (Be sure to execute this command in \dotfiles)
+2. Clone repo into `~/dotfiles`.
+3. Link dotfiles into `$HOME`.
 
+```zsh
+./install/link.sh --migrate
 ```
-stow .
+
+Preview changes only:
+
+```zsh
+./install/link.sh --simulate
 ```
 
 
@@ -32,8 +38,35 @@ cd ~/.dotfiles && brew bundle
 ```
 
 
-## TODO List
-- [ ] tidy up Brewfile (remove unused packages/dependencies)
-- [x] add lazygit
-- [ ] build a buffer navigation system 
-- [ ] get tabout  to working
+## Layout
+
+- `.zshrc` is the shell entrypoint.
+- `.config/zsh/*.zsh` contains modular shell config:
+  - `00-env.zsh`: shared exports
+  - `10-path.zsh`: PATH ordering
+  - `20-aliases.zsh`: aliases
+  - `30-tools.zsh`: tool initializers (opam, pyenv, bun, sdkman)
+  - `90-local.zsh`: machine-specific overrides (untracked)
+- tmux themes live in `.config/tmux/themes/`.
+- tmux session script lives at `.config/scripts/tmux-session-dispensary.sh`.
+- tmux startup chooser lives at `.config/scripts/tmux-chooser.sh`.
+- Ghostty canonical config lives in `.config/ghostty/config`.
+- this repo keeps canonical configs at root (`.zshrc`, `.tmux.conf`, `.config/...`) and links them into `$HOME` via `install/link.sh`.
+
+## Health check
+
+Run:
+
+```zsh
+./install/doctor.sh
+```
+
+## Safe rollback
+
+This repo is git-tracked, so you can always inspect or discard changes.
+
+```zsh
+git status
+git diff
+git restore .
+```

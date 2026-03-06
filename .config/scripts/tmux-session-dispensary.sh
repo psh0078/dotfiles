@@ -1,32 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DIRS=(
-    "$HOME/Desktop/Research"
-    "$HOME/Desktop/school"
-    "$HOME/Desktop"
-    "$HOME/dotfiles"
-    "$HOME/dev"
-    "$HOME"
+  "$HOME/Desktop/Research"
+  "$HOME/Desktop/school"
+  "$HOME/Desktop"
+  "$HOME/dotfiles"
+  "$HOME/dev"
+  "$HOME"
 )
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+  selected=$1
 else
-    selected=$(fd . "${DIRS[@]}" --type=dir --max-depth=1 --full-path --base-directory $HOME \
-        | sed "s|^$HOME/||" \
-        | fzf --height 40% --reverse)
+  selected=$(fd . "${DIRS[@]}" --type=dir --max-depth=1 --full-path --base-directory "$HOME" \
+    | sed "s|^$HOME/||" \
+    | fzf --height 40% --reverse)
 
-    [[ $selected ]] && selected="$HOME/$selected"
+  [[ $selected ]] && selected="$HOME/$selected"
 fi
 
 [[ ! $selected ]] && exit 0
 
-# selected=$(realpath -s "$selected")
 selected_name=$(basename "$selected" | tr . _)
 
 if ! tmux has-session -t "$selected_name"; then
-    tmux new-session -ds "$selected_name" -c "$selected"
-    tmux select-window -t "$selected_name:1"
+  tmux new-session -ds "$selected_name" -c "$selected"
+  tmux select-window -t "$selected_name:1"
 fi
 
-tmux switch-client -t "$selected_name"
+if [[ -n "$TMUX" ]]; then
+  tmux switch-client -t "$selected_name"
+else
+  tmux attach-session -t "$selected_name"
+fi

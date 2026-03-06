@@ -1,97 +1,29 @@
-##### My Zsh Config #####
+tmux_chooser="$HOME/.config/scripts/tmux-chooser.sh"
+if [ ! -x "$tmux_chooser" ] && [ -x "$HOME/dotfiles/.config/scripts/tmux-chooser.sh" ]; then
+  tmux_chooser="$HOME/dotfiles/.config/scripts/tmux-chooser.sh"
+fi
+"$tmux_chooser"
 
-source $HOME/.config/scripts/tmux-chooser.sh
-
-# Path to your Oh My Zsh installation.
-PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
 export ZSH="$HOME/.oh-my-zsh"
-export XDG_CONFIG_HOME="$HOME/.config"
-VIM="nvim"
-ZSH_THEME="philips"
-
-eval $(opam env)
+export ZSH_THEME="philips"
 
 plugins=(
-  z
   git
   aliases
   you-should-use
   zsh-autosuggestions
   zsh-syntax-highlighting
-  )
-source $ZSH/oh-my-zsh.sh
+)
 
-#### ALIAS ####
-alias l="ls -alh"
-alias c="clear"
-alias vim="nvim"
-alias vi="nvim"
-alias tm="tmux"
-alias venv="source .venv/bin/activate"
-alias lg="lazygit"
-alias bopen="open -a 'Brave Browser'"
-alias ol="printf 'light' > ~/.tmux_theme; tmux source-file ~/.tmux_light.conf; tmux set-environment -g THEME 'light'"
-alias od="printf 'dark' > ~/.tmux_theme; tmux source-file ~/.tmux_dark.conf; tmux set-environment -g THEME 'dark'"
-alias sd="cd ~ && cd \$(find * -type d | fzf --height 40% --reverse)"
+source "$ZSH/oh-my-zsh.sh"
 
-if command -v pyenv >/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+zsh_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+if [ ! -d "$zsh_config_dir" ] && [ -d "$HOME/dotfiles/.config/zsh" ]; then
+  zsh_config_dir="$HOME/dotfiles/.config/zsh"
 fi
 
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-[[ ! -r '/Users/kafka/.opam/opam-init/init.zsh' ]] || source '/Users/kafka/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-# END opam configuration
-
-. "$HOME/.local/bin/env"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/kafka/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
-export PATH="/opt/homebrew/bin:$PATH"
-
-# bun completions
-[ -s "/Users/kafka/.bun/_bun" ] && source "/Users/kafka/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/.bun/bin:$PATH"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/kafka/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/kafka/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/kafka/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/kafka/miniforge3/bin:$PATH"
-    fi
+if [ -d "$zsh_config_dir" ]; then
+  for module in "$zsh_config_dir"/*.zsh(N); do
+    [ -r "$module" ] && source "$module"
+  done
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/Users/kafka/miniforge3/bin/mamba';
-export MAMBA_ROOT_PREFIX='/Users/kafka/miniforge3';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<

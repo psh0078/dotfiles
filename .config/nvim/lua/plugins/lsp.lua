@@ -1,10 +1,12 @@
 return {
   {
     "mason-org/mason.nvim",
+    cmd = "Mason",
     opts = {}
   },
   {
     "mason-org/mason-lspconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {},
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
@@ -16,7 +18,11 @@ return {
         automatic_installation = false,
         handlers = {
           function(server_name)
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            local ok, blink = pcall(require, "blink.cmp")
+            if ok then
+              capabilities = blink.get_lsp_capabilities(capabilities)
+            end
             require("lspconfig")[server_name].setup({ capabilities = capabilities })
           end,
         }
@@ -25,6 +31,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'saghen/blink.cmp',
       {

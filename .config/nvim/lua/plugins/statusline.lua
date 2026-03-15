@@ -19,7 +19,9 @@ return {
           winbar = 100,
         }
       },
-      sections = {
+      sections = {},
+      inactive_sections = {},
+      winbar = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename' },
@@ -27,7 +29,7 @@ return {
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
       },
-      inactive_sections = {
+      inactive_winbar = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { 'filename' },
@@ -36,8 +38,6 @@ return {
         lualine_z = {}
       },
     })
-    if os.getenv('TMUX') then
-      vim.defer_fn(function() vim.o.laststatus = 0 end, 0)
-    end
+    vim.o.laststatus = 0
   end,
 }

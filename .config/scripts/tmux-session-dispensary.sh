@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
 DIRS=(
-  "$HOME/Desktop/Research"
+  "$HOME/Research"
   "$HOME/Desktop/school"
-  "$HOME/Desktop"
   "$HOME/dotfiles"
   "$HOME/dev"
-  "$HOME"
 )
 
 if [[ $# -eq 1 ]]; then
